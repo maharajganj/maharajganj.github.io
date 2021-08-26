@@ -40,7 +40,6 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
   
             districtID = vacdistId;
             stateID = vacstateId
-            
           }
 
           //console.log(document.cookie);
@@ -60,7 +59,7 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
 
 
 
-      if(event.target.id == filterBlock) {
+      if(event.target.id == filterBlock.split(" ")[0]) {
         if(vacfilterBlockNow != filterBlock) {
           vacfilterBlockNow = filterBlock;
         }
@@ -136,13 +135,18 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
         vacBlocks = uniqueBlocks(vacBlocks);
         blockFilter.innerHTML = '';
         for (var i=0; i < vacBlocks.length; i++) {
-          blockFilter.innerHTML += `<a href="#" id="${vacBlocks[i]}" class="block-filter" onclick="vacFinderByDate(undefined, undefined, undefined, '${vacBlocks[i]}')">${vacBlocks[i]}</a>`; 
-          if(document.querySelector('#'+vacfilterBlockNow)) {
-            document.querySelector('#'+vacfilterBlockNow).classList.add("active");
+          blockFilter.innerHTML += `<a href="#" id="${vacBlocks[i].split(" ")[0]}" class="blockfilter-btn" onclick="vacFinderByDate(undefined, undefined, undefined, '${vacBlocks[i]}', undefined)">${vacBlocks[i].split(" ")[0]}</a>`;
+        }
+
+        if( vacfilterBlockNow != "none") {
+          if(document.querySelector('#'+vacfilterBlockNow.split(" ")[0])) {
+            document.querySelector('#'+vacfilterBlockNow.split(" ")[0]).classList.add("active");
           }
         }
 
-        
+
+
+
         
         
         if(vacfilterBlockNow != "none"){
@@ -251,12 +255,12 @@ function vacFinder() {
 
       <div id="vacLocation" class="d-flex flex-wrap fs-5 gap-3">  
         <div class="">
-          <select id="state-dropdown" name="state" class="form-select" onchange="onselectState()">
+          <select id="state-dropdown" name="state" class="form-select bg-transparent" onchange="onselectState()">
             <option selected="true" disabled>Choose State</option>
           </select>
         </div>
         <div class"">
-          <select id="district-dropdown" name="district" class="form-select">
+          <select id="district-dropdown" name="district" class="form-select bg-transparent" onchange="onselectDistrict()">
             <option selected="true" disabled>Choose District</option>
           </select>
         </div>          
@@ -279,7 +283,7 @@ function vacFinder() {
         <button id="covishield-btn" class="vacfilter-btn btn btn-outline-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covishield', undefined, undefined)">Covishield</button>
         <button id="covaxin-btn" class="vacfilter-btn btn btn-outline-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covaxin', undefined, undefined)">Covaxin</button>
       </div>
-      <div id="blockFilters" class="d-flex justify-content-evenly gap-sm-2 flex-wrap fs-5 mt-2 w-100"></div>
+      <div id="blockFilters" class="d-flex justify-content-evenly gap-1 flex-wrap fs-5 mt-2 w-100"></div>
       `;
     
     let stateDropdown = document.getElementById('state-dropdown');
@@ -361,6 +365,9 @@ function vacFinder() {
 
 
 
-  function selectDistrict(event) {
+
+  function onselectDistrict() {
+
+    document.getElementById('vacAvail').classList.remove("active");
       
   }

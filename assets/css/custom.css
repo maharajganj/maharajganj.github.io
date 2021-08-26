@@ -26,11 +26,17 @@ body {
   }
 }
 
-.block-filter {
+.blockfilter-btn {
   text-decoration: none;
 }
-.block-filter.active {
+.blockfilter-btn:hover {
+  text-decoration: underline;
+}
+.blockfilter-btn.active {
   /*text-decoration: underline;*/
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 0px 5px;
   color: #dc3545;
 }
 
