@@ -135,7 +135,7 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
         vacBlocks = uniqueBlocks(vacBlocks);
         blockFilter.innerHTML = '';
         for (var i=0; i < vacBlocks.length; i++) {
-          blockFilter.innerHTML += `<a href="#" id="${vacBlocks[i].split(" ")[0]}" class="blockfilter-btn" onclick="vacFinderByDate(undefined, undefined, undefined, '${vacBlocks[i]}', undefined)">${vacBlocks[i].split(" ")[0]}</a>`;
+          blockFilter.innerHTML += `<a href="#" id="${vacBlocks[i].split(" ")[0]}" class="blockfilter-btn" onclick="vacFinderByDate(undefined, undefined, undefined, '${vacBlocks[i]}', undefined); return false;">${vacBlocks[i].split(" ")[0]}</a>`;
         }
 
         if( vacfilterBlockNow != "none") {
@@ -176,12 +176,12 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
           var div = document.createElement("div");
           div.classList.add('col-md-6', 'col-lg-4');          
           div.innerHTML = `
-          <div class="card bg-light border-primary mx-auto mb-4">
+          <div class="card mx-auto mb-4 border-primary bg-light">
                 
-            <div id="cardBody-${vacsessions[i].session_id}" class="card-body fs-5 row text-center align-items-center">
+            <div id="cardBody-${vacsessions[i].session_id}" class="card-body fs-5 row text-center align-items-center mx-auto px-1">
             
               <div class="lead d-flex justify-content-start flex-wrap">  
-                <h5 id="center-name" class="card-title fs-4 mb-2 me-3 text-start">${vacsessions[i].name}</h5>
+                <h5 id="center-name" class="card-title fs-4 mb-2 me-3 text-start fw-normal">${vacsessions[i].name}</h5>
                 <p id="block-name" class="card-text fs-5 mb-0">[${vacsessions[i].block_name}, ${vacsessions[i].pincode}]</p>
               </div>    
               
@@ -210,10 +210,10 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
               </div>  
             
               <div class="col-8">
-                <a href="https://selfregistration.cowin.gov.in/" target="_blank" class="btn btn-outline-success btn-sm fs-4 mt-3 w-100 p-0">Book on CoWin</a>
+                <a href="https://selfregistration.cowin.gov.in/" target="_blank" class="btn btn-outline-success btn-sm fs-6 mt-3 w-100 px-0">Book on CoWin</a>
               </div>
               <div class="col-4">  
-                <button id="vacrefresh-btn" type="button" class="btn btn-outline-danger btn-sm fs-4 mt-3 w-100 p-0" onclick="vacRefresh('${vacsessions[i].date}', '${vacsessions[i].session_id}')">Refresh</button>
+                <button id="vacrefresh-btn" type="button" class="btn btn-outline-danger btn-sm fs-6 mt-3 w-100 px-0" onclick="vacRefresh('${vacsessions[i].date}', '${vacsessions[i].session_id}')">Refresh</button>
               </div>
             </div>
           </div>`;

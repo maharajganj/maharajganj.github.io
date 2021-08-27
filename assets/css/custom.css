@@ -49,6 +49,16 @@ body {
   border-color: #0d6efd;
 }
 
+.vacfinder-avail-card {
+  /*background-image: linear-gradient(180deg, #ffffff00, #fff),
+    linear-gradient(70deg, #ddf4ff 32%, #dafbe1);*/
+}
+/*.vacfinder-navail-card {
+  background-image: linear-gradient(180deg, #ffffff00, #fff),
+    linear-gradient(70deg, #ffebe9 32%, #ffebe9);
+  border-color: #ff818266;
+}*/
+
 @media only screen and (max-width: 530px) {
   select#state-dropdown,
   select#district-dropdown {
