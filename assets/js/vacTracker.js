@@ -3,7 +3,7 @@ function vacTracker(date, sessionid, pin) {
     vaccineBody.innerHTML = `
       <div class="card bg-light border-danger col-md-10 col-lg-8 mx-auto">
         <h5 class="card-header text-center display-4 p-3">Vaccine Tracker</h5>      
-        <div id="vactrackercardBody" class="card-body fs-5 row text-center align-items-center"></div>
+        <div id="vactrackercardBody" class="card-body fs-5 row text-center align-items-center mx-auto px-1"></div>
       </div>`;
     
     vactrackerBtn.classList.add("active");
@@ -36,7 +36,7 @@ function vacTracker(date, sessionid, pin) {
               
             vactrackercardBody.innerHTML = `
                 <div class="lead d-flex justify-content-start flex-wrap">  
-                  <h5 id="center-name" class="card-title fs-4 mb-2 ms-md-4 me-3 text-start">${data.sessions[i].name}</h5>
+                  <h5 id="center-name" class="card-title fs-4 mb-2 ms-md-4 me-3 text-start fw-normal">${data.sessions[i].name}</h5>
                   <p id="block-name" class="card-text fs-5 mb-0">[${data.sessions[i].block_name}, ${data.sessions[i].pincode}]</p>
                 </div>    
                 
@@ -85,7 +85,7 @@ function vacTracker(date, sessionid, pin) {
               <div id="cardBody" class="card-body fs-5 row text-center align-items-center">
               
                 <div class="lead d-flex justify-content-start flex-wrap">  
-                  <h5 id="center" class="card-title fs-4 mb-2 me-3 text-start">${data.sessions[i].name}</h5>
+                  <h5 id="center" class="card-title fs-4 mb-2 me-3 text-start fw-normal">${data.sessions[i].name}</h5>
                   <p id="block" class="card-text fs-5 mb-0">[${data.sessions[i].block_name}, ${data.sessions[i].pincode}]</p>
                 </div>    
                 

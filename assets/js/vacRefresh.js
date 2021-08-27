@@ -19,7 +19,7 @@ function vacRefresh(date, sessionid) {
               
             vacrefreshcardBody.innerHTML = `
                 <div class="lead d-flex justify-content-start flex-wrap">  
-                  <h5 id="center-name" class="card-title fs-4 mb-2 ms-md-4 me-3 text-start">${data.sessions[i].name}</h5>
+                  <h5 id="center-name" class="card-title fs-4 mb-2 me-3 text-start fw-normal">${data.sessions[i].name}</h5>
                   <p id="block-name" class="card-text fs-5 mb-0">[${data.sessions[i].block_name}, ${data.sessions[i].pincode}]</p>
                 </div>    
                 
@@ -47,10 +47,10 @@ function vacRefresh(date, sessionid) {
                   <h5 class="card-title fs-4 mb-1">${vaccineDate}</h5>
                 </div>  
                 <div class="col-8">
-                  <a href="https://selfregistration.cowin.gov.in/" target="_blank" class="btn btn-outline-success btn-sm fs-4 mt-3 w-100 p-0">Book on CoWin</a>
+                  <a href="https://selfregistration.cowin.gov.in/" target="_blank" class="btn btn-outline-success btn-sm fs-6 mt-3 w-100 px-0">Book on CoWin</a>
                 </div>
                 <div class="col-4">  
-                <button id="vacrefresh-btn" type="button" class="btn btn-outline-danger btn-sm fs-4 mt-3 w-100 p-0" onclick="vacRefresh('${data.sessions[i].date}', '${data.sessions[i].session_id}')">Refresh</button>
+                <button id="vacrefresh-btn" type="button" class="btn btn-outline-danger btn-sm fs-6 mt-3 w-100 px-0" onclick="vacRefresh('${data.sessions[i].date}', '${data.sessions[i].session_id}')">Refresh</button>
                 </div>`;
   
             vacrefreshAvailCheck.push(data.sessions[i].session_id);
