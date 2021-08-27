@@ -28,16 +28,25 @@ body {
 
 .blockfilter-btn {
   text-decoration: none;
-}
-.blockfilter-btn:hover {
-  text-decoration: underline;
+  position: relative;
 }
 .blockfilter-btn.active {
-  /*text-decoration: underline;*/
+  color: #dc3545;
+}
+
+.blockfilter-btn.active:before,
+.blockfilter-btn:hover:before {
+  content: "";
+  position: absolute;
+  left: -5%;
   border: 1px solid;
   border-radius: 5px;
-  padding: 0px 5px;
-  color: #dc3545;
+  height: 26px;
+  width: 110%;
+}
+
+.blockfilter-btn.active:hover:before {
+  border-color: #0d6efd;
 }
 
 @media only screen and (max-width: 530px) {
