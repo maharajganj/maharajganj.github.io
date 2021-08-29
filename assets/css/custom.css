@@ -65,3 +65,14 @@ body {
     max-width: 150px;
   }
 }
+
+.vacfilter-btn.active:hover,
+.vacfilter-btn.active:active {
+  color: #6c757d;
+  background-color: transparent;
+}
+
+/*.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}*/
