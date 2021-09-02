@@ -312,7 +312,7 @@ function vacFinder() {
     
     var todayBtn = document.querySelector('#today-btn');
     var tomorrowBtn = document.querySelector('#tomorrow-btn');
-  
+    
     new Date().getHours() < 18 ? todayBtn.classList.add("active") : tomorrowBtn.classList.add("active");
     
     document.querySelectorAll('.vacfinderbydate-btn').forEach(item => {
@@ -362,8 +362,6 @@ function vacFinder() {
         console.error('Fetch Error -', err);  
       });
   }
-
-
 
 
   function onselectDistrict() {
