@@ -17,9 +17,9 @@ function vacAlerts() {
           </div>  
         </div>
         <div class="px-2 mx-auto lh-base">
-          <p class="lead mb-4">Join this channel to get instant alerts the moment vaccine slots open and become available for booking so you can book your vaccines real quick and for sure. </p>
+          <p class="lead mb-4">Covid-19 Vaccine Slot availability tracker and notifier for Maharajganj. <br>Get instant notifications for new vaccine slot openings in Maharajganj and stay ahead at booking your vaccines. </p>
           
-          <p class="lead mb-4"> Share with your friends and family to help them get aware and vaccinated. </p>
+          <p class="lead mb-4"> Share with people around you to spread awareness and get them vaccinated. </p>
           
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="https://telegram.me/vaccine_alerts_maharajganj" target="_blank" type="button" class="btn btn-primary btn-lg px-4 gap-3 fs-4" title="Join Vaccine Alerts Maharajganj">Join Channel</a>
