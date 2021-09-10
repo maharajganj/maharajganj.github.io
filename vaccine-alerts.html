@@ -44,33 +44,34 @@
       <div id="main" class="main">
 
         <div id="vaccineBtn" class="features pb-2">
-          <div class="d-flex justify-content-evenly flex-wrap gap-3 pt-0 pb-3 pb-sm-3 border-bottom mb-4">
+          <div class="d-flex justify-content-evenly flex-wrap gap-3 pt-0 pb-3 pb-sm-3 border-bottom mb-2">
             <a id="vacfinder-btn" role="button" href="/" class="btn btn-outline-primary fs-5">
               Vaccine Finder
             </a>
-            <!--<button id="vacalert-btn" type="button" class="btn btn-outline-success fs-6 order-sm-last" onclick="vacAlerts()">
+            <button id="vacalert-btn" type="button" class="btn btn-outline-success fs-5 order-sm-last" >
               Vaccine Alerts
-            </button>-->
-            <button id="vactracker-btn" type="button" class="btn btn-outline-danger fs-5 d-none" onclick="initCheck()">
-              Vaccine Tracker
             </button>
+            <!--<button id="vactracker-btn" type="button" class="btn btn-outline-danger fs-5 d-none" onclick="initCheck()">
+              Vaccine Tracker
+            </button>-->
           </div>
         </div>
         
-        <div id="vaccineBodyTitle"></div>
+        <div id="vaccineBodyTitle" class="display-4 text-center mb-4">Vaccine Alerts</div>
         <div id="vaccineBody" class="vaccines container">
             <div class="px-0 pb-5 text-center">
-                <div class="d-flex justify-content-center align-items-center mb-4 flex-wrap gap-2">
+                <div class="d-flex justify-content-center align-items-center mb-4 flex-wrap gap-3">
                   <img class="" style="max-width:100px; max-height:100px;" src="/assets/images/vaccine-alerts-maharajganj.jpg" alt="Vaccine Alerts Maharajganj">
-                  <div class="mb-2 text-start">
-                    <h1 class="fs-4 mb-2">Vaccine Alerts Maharajganj</h1>
-                    <a href="https://telegram.me/Vaccine_Alerts_Maharajganj" class="text-decoration-none" title="Vaccine Alerts Maharajganj">@vaccine_alerts_maharajganj</a>
+                  <div class="tg-subhead mb-2 text-start">
+                    <h1 class="fs-3 mb-2">Vaccine Alerts Maharajganj</h1>
+                    <a href="https://telegram.me/Vaccine_Alerts_Maharajganj" class="text-decoration-none" title="Vaccine Alerts Maharajganj">@Vaccine_Alerts_Maharajganj</a>
                   </div>  
                 </div>
                 <div class="px-2 mx-auto lh-base">
-                  <p class="lead mb-4">Covid-19 Vaccine Slot availability tracker and notifier for Maharajganj. <br>Get instant notifications for new vaccine slot openings in Maharajganj and stay ahead at booking your vaccines. </p>
+                  <p class="lead mb-3">Covid-19 Vaccine Slot availability tracker and notifier for Maharajganj.</p>
+                  <p class="lead mb-4">Get instant notifications for new vaccine slot openings in Maharajganj and stay ahead at booking your vaccines. </p>
                   
-                  <p class="lead mb-4"> Share with people around you to spread awareness and get them vaccinated. </p>
+                  <!--<p class="lead mb-4"> Share with people around you to spread awareness and get them vaccinated. </p>-->
                   
                   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <a href="https://telegram.me/Vaccine_Alerts_Maharajganj" target="_blank" type="button" class="btn btn-primary btn-lg px-4 gap-3 fs-4" title="Join Vaccine Alerts Maharajganj">Join Channel</a>
@@ -93,8 +94,54 @@
     <!-- Jquery and Js Plugins -->
 	
   
+  <style>
+  @media only screen and (max-width: 396px) {
+    .tg-subhead{
+      text-align: center !important;
+    }
+  }
+  @media only screen and (min-width: 397px) {
+    .tg-subhead h1{
+      max-width: 200px !important;
+      line-height: 1.3;
+    }
+  }
+  @media only screen and (min-width: 450px) {
+    .tg-subhead h1{
+      max-width: 100% !important;
+      margin-bottom: 15px !important;
+      line-height: 1.3;
+    }
+  }
+  div#vaccineBodyTitle {
+    margin-bottom: 30px !important;
+  }
+
+  </style>
+
+
+
+
+
+
+
+
+  <script>
+    window.onload = function() {
+      document.getElementById('vacalert-btn').classList.add("active");
+    }
+
+  </script>
   
-  <!--<script src="assets/js/vacRefresh.js"></script>
+  
+  
+  
+  
+  
+  
+  
+  
+    <!--<script src="assets/js/vacRefresh.js"></script>
   <script src="assets/js/vacAlerts.js"></script>
   <script src="assets/js/vacFinder.js"></script>
   <script src="assets/js/vacTracker.js"></script>
