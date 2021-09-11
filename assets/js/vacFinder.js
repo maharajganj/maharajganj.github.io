@@ -328,44 +328,44 @@ function vacFinder() {
 
 
 
-  function onselectState(tempStateID = 34) {
+function onselectState(tempStateID = 34) {
 
-    let districtDropdown = document.getElementById('district-dropdown');
-    districtDropdown.length = 0;
+  let districtDropdown = document.getElementById('district-dropdown');
+  districtDropdown.length = 0;
 
-    let defaultOption = document.createElement('option');
-    defaultOption.text = 'Choose District';
-    defaultOption.disabled = true;
-    districtDropdown.add(defaultOption);
-    districtDropdown.selectedIndex = 0;
+  let defaultOption = document.createElement('option');
+  defaultOption.text = 'Choose District';
+  defaultOption.disabled = true;
+  districtDropdown.add(defaultOption);
+  districtDropdown.selectedIndex = 0;
 
-    if(typeof event !== 'undefined' && event.type === 'change' && event.target.id == 'state-dropdown') {
-        tempStateID = event.target.value;
-    }
-
-    const districtUrl = 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/'+tempStateID;
-
-      fetch(districtUrl).then(function(response) { response.json().then(function(data) {  
-        let option;
-        for (let i = 0; i < data.districts.length; i++) {
-          option = document.createElement('option');
-          option.text = data.districts[i].district_name;
-          option.value = data.districts[i].district_id;
-          districtDropdown.add(option);
-        }
-        if(typeof event === 'undefined' || event.type !== 'onchange') {
-          districtDropdown.value = districtID;
-        }   
-          });  
-        })  
-      .catch(function(err) {  
-        console.error('Fetch Error -', err);  
-      });
+  if(typeof event !== 'undefined' && event.type === 'change' && event.target.id == 'state-dropdown') {
+      tempStateID = event.target.value;
   }
 
+  const districtUrl = 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/'+tempStateID;
 
-  function onselectDistrict() {
+    fetch(districtUrl).then(function(response) { response.json().then(function(data) {  
+      let option;
+      for (let i = 0; i < data.districts.length; i++) {
+        option = document.createElement('option');
+        option.text = data.districts[i].district_name;
+        option.value = data.districts[i].district_id;
+        districtDropdown.add(option);
+      }
+      if(typeof event === 'undefined' || event.type !== 'onchange') {
+        districtDropdown.value = districtID;
+      }   
+        });  
+      })  
+    .catch(function(err) {  
+      console.error('Fetch Error -', err);  
+    });
+}
 
-    document.getElementById('vacAvail').classList.remove("active");
-      
-  }
+
+function onselectDistrict() {
+
+  document.getElementById('vacAvail').classList.remove("active");
+    
+}
