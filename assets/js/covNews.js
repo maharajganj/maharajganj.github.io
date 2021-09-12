@@ -43,7 +43,7 @@ function covNews() {
                   <h5 class="card-header lead fs-5 p-3 lh-sm">${data.articles[i].title}</h5>
                     
                   <div class="card-body fs-6 px-3 lh-base"> 
-                    ${data.articles[i].description}                    
+                    ${data.articles[i].description !== null ? data.articles[i].description : "No Description."} <br> &nbsp; <span style="position:absolute; right:25px;"> -- <a href="${data.articles[i].url}" target="_blank">Read More</a></span>                  
                   </div>
 
                 </div>`;

@@ -7,7 +7,7 @@ function vacRefresh(date, sessionid) {
     
     fetchData(date, districtID).then(data => {
   
-      if ( data != 0) {
+      if ( data != 0 && data.sessions.length !== 0) {
   
         var dateParts = date.split("-");
         var dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
@@ -67,6 +67,13 @@ function vacRefresh(date, sessionid) {
             </div>`;        
         }
       
+      }
+
+      else if (data != 0 && data.sessions.length === 0) {
+        vacrefreshcardBody.innerHTML = `
+            <div class="lead fs-4 text-center pt-0 pb-3 lh-base">
+              This Vaccination Session is not active any more.
+            </div>`;
       }
       else {
         vacrefreshcardBody.innerHTML = `
