@@ -114,7 +114,7 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
       
       vaccinesNearByList.innerHTML = '';
   
-      if ( data != 0) {
+      if ( data != 0 && data.sessions.length !== 0) {
 
         if(vacfilterAvail == "avail") {
         var vacsessions = data.sessions.filter(session => session.available_capacity > 0);
@@ -232,6 +232,14 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
             </div>`;
         }
       }
+
+      else if (data != 0 && data.sessions.length === 0) {
+        vaccinesNearByList.innerHTML = `
+            <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
+              Currently, No Vaccination Center found with available vaccine in Maharajganj for selected day.
+            </div>`;
+      }
+
       else {
         vaccinesNearByList.innerHTML = `
           <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
@@ -249,7 +257,7 @@ function vacFinder() {
     vacalertBtn.classList.remove("active");
     vactrackerBtn.classList.remove("active");
   
-    vaccineBody.innerHTML = '<div class="display-4 text-center mb-3">Vaccine Finder</div>';
+    vaccineBody.innerHTML = '<div class="display-4 text-primary text-center mb-3">Vaccine Finder</div>';
     vaccinesNearByTitle.innerHTML = `
     <div class="d-flex justify-content-center  align-items-center mb-4 flex-wrap w-100 gap-3">
 

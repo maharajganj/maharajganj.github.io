@@ -24,7 +24,7 @@ function vacTracker(date, sessionid, pin) {
     
     fetchData(date, districtID).then(data => {
   
-      if ( data != 0) {
+      if ( data != 0 ) {
   
         var dateParts = date.split("-");
         var dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
