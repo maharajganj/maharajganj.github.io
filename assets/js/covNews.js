@@ -8,6 +8,8 @@ let vacLoadingGif = '<img class="col-4 d-block mx-auto mt-3 p-0" style="width:20
 
 
 async function fetchData() {
+
+  //hello
   
     let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=3356766ce52b4fd5b64c6b15f8153dbf&q=covid';
     
