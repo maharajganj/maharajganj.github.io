@@ -52,63 +52,35 @@
             <a id="vacalert-btn" role="button" href="/vaccine-alerts.html" class="btn btn-outline-danger fs-5">
               Vaccine Alerts
             </a>
-            <!--<button id="vactracker-btn" type="button" class="btn btn-outline-danger fs-5 d-none" onclick="initCheck()">
-              Vaccine Tracker
-            </button>-->
             <a id="covidnews-btn" role="button" class="btn btn-outline-success fs-5">
                 Covid-19 News
             </a>
           </div>
         </div>
         
-        <div id="vaccineBodyTitle" class="display-5 text-center text-success mt-2 mb-5">Covid-19 News & Updates</div>
-        <div id="vaccineBody" class="vaccines container">
-        </div>
+        <div id="vaccineBodyTitle" class="display-5 text-center text-success mt-2 mb-4">Covid-19 News & Updates</div>
         
-        <div id="vaccinesNearBy" class="vaccines container mb-5">
-          <div id="vaccinesNearBy-title" class="d-md-flex justify-content-evenly display-4 text-center mx-auto flex-wrap"></div>
-          <div id="vaccinesNearBy-list" class="row justify-content-center pt-2"></div>
+        <div id="vaccineBody" class="vaccines container">
+
+          <div class="nav nav-tabs justify-content-lg-center mb-4" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home-tab-pane" type="button" role="tab" aria-controls="nav-home-tab-pane" aria-selected="true" onclick="return covNews('nav-home-tab')">India HI</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile-tab-pane" type="button" role="tab" aria-controls="nav-profile-tab-pane" aria-selected="false" onclick="return covNews('nav-profile-tab')">India EN</button>
+            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact-tab-pane" type="button" role="tab" aria-controls="nav-contact-tab-pane" aria-selected="false" onclick="return covNews('nav-contact-tab')">International</button>
+          </div>
+          
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active d-flex row justify-content-center" id="nav-home-tab-pane" role="tabpanel" aria-labelledby="nav-home-tab"></div>
+            <div class="tab-pane fade d-flex row justify-content-center" id="nav-profile-tab-pane" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
+            <div class="tab-pane fade d-flex row justify-content-center" id="nav-contact-tab-pane" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
+          </div>
+
         </div>
-         
 
       </div> <!-- Main -->
     </div><!-- Wrapper -->
 
 
-    <!-- Jquery and Js Plugins -->
-	
-  
-  <style>
-  @media only screen and (max-width: 396px) {
-    .tg-subhead{
-      text-align: center !important;
-    }
-  }
-  @media only screen and (min-width: 397px) {
-    .tg-subhead h1{
-      max-width: 200px !important;
-      line-height: 1.3;
-    }
-  }
-  @media only screen and (min-width: 450px) {
-    .tg-subhead h1{
-      max-width: 100% !important;
-      margin-bottom: 15px !important;
-      line-height: 1.3;
-    }
-  }
-  div#vaccineBodyTitle {
-    margin-bottom: 30px !important;
-  }
-
-  </style>
-
-
-
-
-
-
-
+    
 
   <script>
     window.onload = function() {
@@ -121,20 +93,29 @@
   
   
   
-  
+  <!-- Jquery and Js Plugins --> 
   
   <script src="assets/js/covNews.js"></script>
   
-    <!--<script src="assets/js/vacRefresh.js"></script>
+  <!--
+  <script src="assets/js/vacRefresh.js"></script>
   <script src="assets/js/vacAlerts.js"></script>
   <script src="assets/js/vacFinder.js"></script>
   <script src="assets/js/vacTracker.js"></script>
-  <script src="assets/js/covalert.js"></script>-->
+  <script src="assets/js/covalert.js"></script>
+  -->
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
   
   
-  <!--<script type="text/javascript" src="assets/js/vendor/jquery-2.1.1.js"></script>
-   <script type="text/javascript" src="assets/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="assets/js/vendor/bootstrap.min.js"></script>-->
+  <!--
+  <script type="text/javascript" src="assets/js/vendor/jquery-2.1.1.js"></script>
+  <script type="text/javascript" src="assets/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="assets/js/vendor/bootstrap.min.js"></script>
+  -->
    
   
   

@@ -1,18 +1,11 @@
-let vaccineBody = document.querySelector('#vaccineBody');
-let vaccinesNearByTitle = document.querySelector('#vaccinesNearBy-title');
-let vaccinesNearByList = document.querySelector('#vaccinesNearBy-list');
+let navHome = document.querySelector('#nav-home-tab-pane');
+let navProfile = document.querySelector('#nav-profile-tab-pane');
+let navContact = document.querySelector('#nav-contact-tab-pane');
 
-let vacLoadingGif = '<img class="col-4 d-block mx-auto mt-3 p-0" style="width:200px; height:200px;" src="assets/images/vaccine-loader.gif" alt="Vaccine Loader"></img>';
+let vacLoadingGif = '<img class="col-4 d-block mx-auto mt-5 p-0" style="width:200px; height:200px;" src="assets/images/vaccine-loader.gif" alt="Vaccine Loader"></img>';
 
-
-
-
-async function fetchData() {
-
-  
-    //let url = 'https://gnews.io/api/v4/search?token=40e97e6d8bd8dc8d6036068635719942&q=covid&lang=hi&sortby=publishedAt';
-    let url = 'https://pipra.today/news_covid_json.php';
-
+async function fetchData(url) {
+    
     const response = await fetch(url);
       
       if(response.status === 200) {
@@ -21,15 +14,29 @@ async function fetchData() {
       else {
         return 0;
       }
-  }
+}
 
-function covNews() {
+function covNews(tabId) {
 
-    vaccinesNearByList.innerHTML = vacLoadingGif;
+    let tabPane = document.getElementById(tabId+'-pane');
 
-    fetchData().then(data => {
-      
-        vaccinesNearByList.innerHTML = '';
+    navHome.innerHTML = '';
+    navProfile.innerHTML = '';
+    navContact.innerHTML = '';
+    
+    tabPane.innerHTML = vacLoadingGif;
+
+    switch(tabId) {
+      case "nav-home-tab": url = 'https://api.npoint.io/796df250cefe6e5b1cf4';
+        break;
+      case "nav-profile-tab": url = 'https://api.npoint.io/96fea888cc82f68181b9';
+        break;
+      default: url = 'https://pipra.today/news_covid_json.php';
+    }
+
+    fetchData(url).then(data => {
+
+      tabPane.innerHTML = '';
     
         if ( data != 0) {
 
@@ -42,8 +49,6 @@ function covNews() {
                 div.innerHTML = `
                 <div class="card mx-auto mb-4 border-primary bg-light">
 
-                  
-
                   <div class="card-header p-3 lh-base">
                     <a href="${data.articles[i].url}" class="text-decoration-none" target="_blank"><h5 class="text-primary">${data.articles[i].title}</h5></a>
                     <h6 class="text-secondary small mt-1">${data.articles[i].source.name} &nbsp; ${new Date(data.articles[i].publishedAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} &nbsp; </h6>
@@ -52,29 +57,28 @@ function covNews() {
                   <div class="card-body px-3 mx-auto">
 
                     <img src="${data.articles[i].urlToImage !== null ? data.articles[i].urlToImage : noThumbnail(data.articles[i].source.name)}" class="img-fluid mx-auto d-block" alt="...">
-                    <p class="small text-success lh-base mt-2">
+                    <p class="small text-success lh-base mt-3">
                       ${data.articles[i].description !== null ? data.articles[i].description : "No Description."} <!-- <br> &nbsp; <span style="position:absolute; right:25px;"> -- <a href="${data.articles[i].url}" target="_blank">Read More</a></span> -->                  
                     </p>
-                    </div>
+                  </div>
 
                 </div>`;
             
-                vaccinesNearByList.appendChild(div);
-    
+                tabPane.appendChild(div);
     
             }
           }
 
 
           else if (data.totalResults == 0) {
-            vaccinesNearByList.innerHTML = `
+            tabPane.innerHTML = `
               <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
                 No News headlines for today. Come again later. Thankyou!
               </div>`;
           }
 
           else if (data.status == "error") {
-            vaccinesNearByList.innerHTML = `
+            tabPane.innerHTML = `
               <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
                 ${data.code} <br>${data.message}
               </div>`;
@@ -83,7 +87,7 @@ function covNews() {
 
         }
         else {
-          vaccinesNearByList.innerHTML = `
+          tabPane.innerHTML = `
             <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
               Something Went Wrong! Please try again later.
             </div>`;
@@ -91,16 +95,9 @@ function covNews() {
     
       });
 
+}
 
-
-
-
-
-
-
-}  
-
-covNews();
+covNews('nav-home-tab');
 
 
 
@@ -110,6 +107,6 @@ function noThumbnail(sourceName) {
       return "https://i.ibb.co/YyGxvHW/Free-Republic-logo.jpg";
 
     default:
-      return "https://cdn1.iconfinder.com/data/icons/business-company-1/500/image-512.png";
+      return "https://i.ibb.co/2dChQ9H/nothumb.jpg";
   }
 }
