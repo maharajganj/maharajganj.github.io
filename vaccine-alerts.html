@@ -20,22 +20,22 @@
     <div class="wrapper">
       <!-- Navbar Section -->
 	  
-      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom">
-        <div class="container <!--container-s-->">
+      <nav class="navbar navbar-light bg-light fixed-top border-bottom">
+        <div class="container">
           <a class="navbar-brand fs-4" href="/">Maharajganj.</a>
-          <!--<img class="navbar-brand fs-4 p-0" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/google/298/flag-india_1f1ee-1f1f3.png" height="32" width="32"></img>-->
-		  
-          <button class="btn-cta fs-6 px-3" type="button">COVID-19</button>
-      <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <button class="navbar-toggler btn-cta fs-6 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            COVID-19
+          </button>
+
+          <div class="collapse navbar-collapse d-none" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto navbar-right">
-              <li class="nav-item fs-6"><a class="nav-link js-scroll-trigger" href="#products">Vaccine Finder</a></li>
-              <li class="nav-item fs-6"><a class="nav-link js-scroll-trigger" href="#features">Vaccine Alerts</a></li>
-              <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="#reviews">COVID-19</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing"></a></li>
-              <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="#signup"></a></li>
+              <li class="nav-item fs-5"><a class="nav-link js-scroll-trigger" href="/">Vaccine Finder</a></li>
+              <li class="nav-item fs-5"><a class="nav-link js-scroll-trigger" href="/vaccine-alerts.html">Vaccine Alerts</a></li>
+              <li class="nav-item fs-5"><a class="nav-link js-scroll-trigger" href="/covid19-news.html">Covid-19 News</a></li>
             </ul>
           </div>
-        -->  
+         
         </div>
       </nav>
 	  
@@ -45,16 +45,13 @@
       <div id="main" class="main">
 
         <div id="vaccineBtn" class="features pb-2">
-          <div class="d-flex justify-content-evenly flex-wrap gap-3 pt-0 pb-3 pb-sm-3 border-bottom mb-2">
+          <div class="d-flex justify-content-evenly flex-wrap gap-3 pt-0 pb-3 border-bottom mb-2">
             <a id="vacfinder-btn" role="button" href="/" class="btn btn-outline-primary fs-5">
               Vaccine Finder
             </a>
             <button id="vacalert-btn" type="button" class="btn btn-outline-danger fs-5" >
               Vaccine Alerts
             </button>
-            <!--<button id="vactracker-btn" type="button" class="btn btn-outline-danger fs-5 d-none" onclick="initCheck()">
-              Vaccine Tracker
-            </button>-->
             <a id="covidnews-btn" role="button" href="/covid19-news.html" class="btn btn-outline-success fs-5">
               Covid-19 News
           </a>
@@ -120,43 +117,15 @@
   div#vaccineBodyTitle {
     margin-bottom: 30px !important;
   }
-
   </style>
-
-
-
-
-
-
 
 
   <script>
     window.onload = function() {
       document.getElementById('vacalert-btn').classList.add("active");
     }
-
   </script>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <!--<script src="assets/js/vacRefresh.js"></script>
-  <script src="assets/js/vacAlerts.js"></script>
-  <script src="assets/js/vacFinder.js"></script>
-  <script src="assets/js/vacTracker.js"></script>
-  <script src="assets/js/covalert.js"></script>-->
-  
-  
-  <!--<script type="text/javascript" src="assets/js/vendor/jquery-2.1.1.js"></script>
-   <script type="text/javascript" src="assets/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="assets/js/vendor/bootstrap.min.js"></script>-->
-   
-  
+
   
   </body>
 </html>
