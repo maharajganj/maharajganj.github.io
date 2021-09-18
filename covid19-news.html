@@ -20,27 +20,26 @@
     <div class="wrapper">
       <!-- Navbar Section -->
 	  
-      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom">
-        <div class="container <!--container-s-->">
+      <nav class="navbar navbar-light bg-light fixed-top border-bottom">
+        <div class="container">
           <a class="navbar-brand fs-4" href="/">Maharajganj.</a>
-          <!--<img class="navbar-brand fs-4 p-0" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/google/298/flag-india_1f1ee-1f1f3.png" height="32" width="32"></img>-->
-		  
-          <button class="btn-cta fs-6 px-3" type="button">COVID-19</button>
-      <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <button class="navbar-toggler btn-cta fs-6 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            COVID-19
+          </button>
+
+          <div class="collapse navbar-collapse d-none" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto navbar-right">
-              <li class="nav-item fs-6"><a class="nav-link js-scroll-trigger" href="#products">Vaccine Finder</a></li>
-              <li class="nav-item fs-6"><a class="nav-link js-scroll-trigger" href="#features">Vaccine Alerts</a></li>
-              <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="#reviews">COVID-19</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing"></a></li>
-              <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="#signup"></a></li>
+              <li class="nav-item fs-5"><a class="nav-link js-scroll-trigger" href="/">Vaccine Finder</a></li>
+              <li class="nav-item fs-5"><a class="nav-link js-scroll-trigger" href="/vaccine-alerts.html">Vaccine Alerts</a></li>
+              <li class="nav-item fs-5"><a class="nav-link js-scroll-trigger" href="/covid19-news.html">Covid-19 News</a></li>
             </ul>
           </div>
-        -->  
+         
         </div>
       </nav>
 	  
 	  <!-- Navbar End -->
-
 
       <div id="main" class="main">
 
@@ -53,7 +52,7 @@
               Vaccine Alerts
             </a>
             <a id="covidnews-btn" role="button" class="btn btn-outline-success fs-5">
-                Covid-19 News
+              Covid-19 News
             </a>
           </div>
         </div>
@@ -63,15 +62,15 @@
         <div id="vaccineBody" class="vaccines container">
 
           <div class="nav nav-tabs justify-content-lg-center mb-4" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home-tab-pane" type="button" role="tab" aria-controls="nav-home-tab-pane" aria-selected="true" onclick="return covNews('nav-home-tab')">India HI</button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile-tab-pane" type="button" role="tab" aria-controls="nav-profile-tab-pane" aria-selected="false" onclick="return covNews('nav-profile-tab')">India EN</button>
-            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact-tab-pane" type="button" role="tab" aria-controls="nav-contact-tab-pane" aria-selected="false" onclick="return covNews('nav-contact-tab')">International</button>
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home-tab-pane" type="button" role="tab" onclick="return covNews('nav-home-tab')">India HI</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile-tab-pane" type="button" role="tab" onclick="return covNews('nav-profile-tab')">India EN</button>
+            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact-tab-pane" type="button" role="tab" onclick="return covNews('nav-contact-tab')">International</button>
           </div>
           
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active d-flex row justify-content-center" id="nav-home-tab-pane" role="tabpanel" aria-labelledby="nav-home-tab"></div>
-            <div class="tab-pane fade d-flex row justify-content-center" id="nav-profile-tab-pane" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
-            <div class="tab-pane fade d-flex row justify-content-center" id="nav-contact-tab-pane" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
+            <div class="tab-pane fade show active d-flex row justify-content-center" id="nav-home-tab-pane" role="tabpanel"></div>
+            <div class="tab-pane fade d-flex row justify-content-center" id="nav-profile-tab-pane" role="tabpanel"></div>
+            <div class="tab-pane fade d-flex row justify-content-center" id="nav-contact-tab-pane" role="tabpanel"></div>
           </div>
 
         </div>

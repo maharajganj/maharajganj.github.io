@@ -20,27 +20,35 @@ function covNews(tabId) {
 
     let tabPane = document.getElementById(tabId+'-pane');
 
-    navHome.innerHTML = '';
-    navProfile.innerHTML = '';
-    navContact.innerHTML = '';
-    
-    tabPane.innerHTML = vacLoadingGif;
-
     switch(tabId) {
       case "nav-home-tab": url = 'https://api.npoint.io/796df250cefe6e5b1cf4';
+        navHome.classList.remove('d-none');
+        navProfile.classList.add('d-none');
+        navContact.classList.add('d-none');
         break;
       case "nav-profile-tab": url = 'https://api.npoint.io/96fea888cc82f68181b9';
+        navProfile.classList.remove('d-none');
+        navHome.classList.add('d-none');
+        navContact.classList.add('d-none');
         break;
       default: url = 'https://pipra.today/news_covid_json.php';
+        navContact.classList.remove('d-none');
+        navHome.classList.add('d-none');
+        navProfile.classList.add('d-none');
     }
 
-    fetchData(url).then(data => {
+    if(tabPane.innerHTML !== ""){
+      return;
+    }
 
-      tabPane.innerHTML = '';
+    tabPane.innerHTML = vacLoadingGif;
+    fetchData(url).then(data => {
     
         if ( data != 0) {
 
           if ( data.totalArticles != 0 ) {
+
+            tabPane.innerHTML = '';
 
             for (var i=0; i < data.articles.length; i++) {
                 
