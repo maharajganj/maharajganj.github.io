@@ -21,17 +21,17 @@ function covNews(tabId) {
     let tabPane = document.getElementById(tabId+'-pane');
 
     switch(tabId) {
-      case "nav-home-tab": url = 'https://api.npoint.io/796df250cefe6e5b1cf4';
+      case "nav-home-tab": url = 'https://pipra.today/news_covid_json.php?news_type=inhi';
         navHome.classList.remove('d-none');
         navProfile.classList.add('d-none');
         navContact.classList.add('d-none');
         break;
-      case "nav-profile-tab": url = 'https://api.npoint.io/96fea888cc82f68181b9';
+      case "nav-profile-tab": url = 'https://pipra.today/news_covid_json.php?news_type=inen';
         navProfile.classList.remove('d-none');
         navHome.classList.add('d-none');
         navContact.classList.add('d-none');
         break;
-      default: url = 'https://pipra.today/news_covid_json.php';
+      default: url = 'https://pipra.today/news_covid_json.php?news_type=int';
         navContact.classList.remove('d-none');
         navHome.classList.add('d-none');
         navProfile.classList.add('d-none');
