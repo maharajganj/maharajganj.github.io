@@ -66,15 +66,9 @@ body {
   }
 }
 
-.vacfilter-btn.active:hover,
-.vacfilter-btn.active:active {
-  color: #6c757d;
-  background-color: transparent;
+.vacfilter-btn.active {
+  background-color: #6c757d;
+  color: #fff;
 }
-
-/*.btn:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}*/
 
 /*Bootstrap mods-------------------------------------------------------------------------------------*/

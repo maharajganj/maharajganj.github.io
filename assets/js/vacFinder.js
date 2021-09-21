@@ -286,10 +286,10 @@ function vacFinder() {
         <button class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate('${new Date(Date.now()+3*86400000)}', undefined, undefined, undefined, undefined)">${new Date(Date.now()+3*86400000).toLocaleString('en', { month: 'short', day: '2-digit' })}</button>
       </div>
       <div id="vacFilter" class="d-flex justify-content-evenly gap-sm-2 flex-sm-wrap mb-3">
-        <button id="dose1-btn" class="vacfilter-btn btn btn-outline-secondary btn-sm" onclick="vacFinderByDate(undefined, 'dose1', undefined, undefined, undefined)">Dose1</button>
-        <button id="dose2-btn" class="vacfilter-btn btn btn-outline-secondary btn-sm" onclick="vacFinderByDate(undefined, 'dose2', undefined, undefined, undefined)">Dose2</button>
-        <button id="covishield-btn" class="vacfilter-btn btn btn-outline-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covishield', undefined, undefined)">Covishield</button>
-        <button id="covaxin-btn" class="vacfilter-btn btn btn-outline-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covaxin', undefined, undefined)">Covaxin</button>
+        <button id="dose1-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, 'dose1', undefined, undefined, undefined)">Dose1</button>
+        <button id="dose2-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, 'dose2', undefined, undefined, undefined)">Dose2</button>
+        <button id="covishield-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covishield', undefined, undefined)">Covishield</button>
+        <button id="covaxin-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covaxin', undefined, undefined)">Covaxin</button>
       </div>
       <div id="blockFilters" class="d-flex justify-content-evenly gap-1 flex-wrap fs-5 mt-2 w-100"></div>
       `;
