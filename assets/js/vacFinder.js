@@ -1,5 +1,5 @@
 
-function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filterVaccine = vacfilterVaccine, filterBlock = vacfilterBlockNow, filterAvail = vacfilterAvail) {
+function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose, filterVaccine = vacfilterVaccine, filterBlock = vacfilterBlockNow, filterAvail = vacfilterAvail) {
 
     vaccinesNearByList.innerHTML = vacLoadingGif;
     
@@ -115,6 +115,26 @@ function vacFinderByDate(date = vacFinderDate, filterDose = vacfilterDose, filte
       vaccinesNearByList.innerHTML = '';
   
       if ( data != 0 && data.sessions.length !== 0) {
+        
+        if ( typeof event === 'undefined') {
+          var vaccineKeys = [];
+          for (var i=0; i < data.sessions.length; i++) {
+            vaccineKeys[i] = data.sessions[i].vaccine;
+          }
+          vaccineKeys = vaccineKeys.filter(function (x, i, a) { return a.indexOf(x) === i; });
+          let otherVaccines = vaccineKeys.filter(x => !['COVISHIELD', 'COVAXIN'].includes(x));
+          if (otherVaccines.length) {
+            let vacfilterBtn = document.getElementById('vacFilter');
+            for (var i=0; i < otherVaccines.length; i++) {
+              let btn = document.createElement("button");
+              btn.classList.add('vacfilter-btn', 'btn', 'btn-light', 'border-secondary', 'btn-sm');
+              btn.setAttribute('id', otherVaccines[i]+'-btn');
+              btn.setAttribute('onclick', 'vacFinderByDate(event, undefined, undefined, '+otherVaccines[i]+', undefined, undefined)');
+              btn.innerHTML = otherVaccines[i][0].toUpperCase() + otherVaccines[i].slice(1).toLowerCase();
+              vacfilterBtn.append(btn);
+            }
+          }
+        }
 
         if(vacfilterAvail == "avail") {
         var vacsessions = data.sessions.filter(session => session.available_capacity > 0);
@@ -274,22 +294,22 @@ function vacFinder() {
         </div>          
       </div>
       <div id="vacbyAvail" class="d-flex justify-content-center gap-3 flex-wrap"> 
-        <button id="vacAvail" class="btn btn-outline-success fs-6 btn-sm active" onclick="vacFinderByDate(undefined, undefined, undefined, undefined, 'avail')">Available Only</button>
-        <button id="vacAll" class="btn btn-outline-primary fs-6 btn-sm" onclick="vacFinderByDate(undefined, undefined, undefined, undefined, 'all')">Show All</button>
+        <button id="vacAvail" class="btn btn-outline-success fs-6 btn-sm active" onclick="vacFinderByDate(event, undefined, undefined, undefined, undefined, 'avail')">Available Only</button>
+        <button id="vacAll" class="btn btn-outline-primary fs-6 btn-sm" onclick="vacFinderByDate(event, undefined, undefined, undefined, undefined, 'all')">Show All</button>
       </div>
     </div>
 
       <div id="vacbyDate" class="d-flex justify-content-evenly gap-sm-2 flex-sm-wrap mb-3">
-        <button id="today-btn" class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate('${new Date()}', undefined, undefined, undefined, undefined)">Today</button>
-        <button id="tomorrow-btn" class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate('${new Date(Date.now()+86400000)}', undefined, undefined, undefined, undefined)">Tomorrow</button>
-        <button class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate('${new Date(Date.now()+2*86400000)}', undefined, undefined, undefined, undefined)">${new Date(Date.now()+2*86400000).toLocaleString('en', { month: 'short', day: '2-digit' })}</button>
-        <button class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate('${new Date(Date.now()+3*86400000)}', undefined, undefined, undefined, undefined)">${new Date(Date.now()+3*86400000).toLocaleString('en', { month: 'short', day: '2-digit' })}</button>
+        <button id="today-btn" class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate(event, '${new Date()}', undefined, undefined, undefined, undefined)">Today</button>
+        <button id="tomorrow-btn" class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate(event, '${new Date(Date.now()+86400000)}', undefined, undefined, undefined, undefined)">Tomorrow</button>
+        <button class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate(event, '${new Date(Date.now()+2*86400000)}', undefined, undefined, undefined, undefined)">${new Date(Date.now()+2*86400000).toLocaleString('en', { month: 'short', day: '2-digit' })}</button>
+        <button class="vacfinderbydate-btn fs-6 btn btn-outline-primary btn-sm" onclick="vacFinderByDate(event, '${new Date(Date.now()+3*86400000)}', undefined, undefined, undefined, undefined)">${new Date(Date.now()+3*86400000).toLocaleString('en', { month: 'short', day: '2-digit' })}</button>
       </div>
       <div id="vacFilter" class="d-flex justify-content-evenly gap-sm-2 flex-sm-wrap mb-3">
-        <button id="dose1-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, 'dose1', undefined, undefined, undefined)">Dose1</button>
-        <button id="dose2-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, 'dose2', undefined, undefined, undefined)">Dose2</button>
-        <button id="covishield-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covishield', undefined, undefined)">Covishield</button>
-        <button id="covaxin-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(undefined, undefined, 'covaxin', undefined, undefined)">Covaxin</button>
+        <button id="dose1-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(event, undefined, 'dose1', undefined, undefined, undefined)">Dose1</button>
+        <button id="dose2-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(event, undefined, 'dose2', undefined, undefined, undefined)">Dose2</button>
+        <button id="covishield-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(event, undefined, undefined, 'covishield', undefined, undefined)">Covishield</button>
+        <button id="covaxin-btn" class="vacfilter-btn btn btn-light border-secondary btn-sm" onclick="vacFinderByDate(event, undefined, undefined, 'covaxin', undefined, undefined)">Covaxin</button>
       </div>
       <div id="blockFilters" class="d-flex justify-content-evenly gap-1 flex-wrap fs-5 mt-2 w-100"></div>
       `;
@@ -330,7 +350,7 @@ function vacFinder() {
       })
     });
     
-    new Date().getHours() < 18 ? vacFinderByDate(new Date(), undefined, undefined, undefined, undefined) : vacFinderByDate(new Date(Date.now()+86400000), undefined, undefined, undefined, undefined);
+    new Date().getHours() < 18 ? vacFinderByDate(undefined, new Date(), undefined, undefined, undefined, undefined) : vacFinderByDate(undefined, new Date(Date.now()+86400000), undefined, undefined, undefined, undefined);
        
   }
 
