@@ -22,6 +22,7 @@ function covNews(tabId) {
 
     switch(tabId) {
       case "nav-home-tab": url = 'https://pipra.today/news_covid_json.php?news_type=inhi';
+      //case "nav-home-tab": url = 'https://gnews.io/api/v4/search?token=40e97e6d8bd8dc8d6036068635719942&q=covid&country=in';
         navHome.classList.remove('d-none');
         navProfile.classList.add('d-none');
         navContact.classList.add('d-none');
