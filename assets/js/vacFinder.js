@@ -14,19 +14,16 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
     var vacAvailCheck = [];
 
     if(typeof event !== 'undefined') {
+
       if(event.target.id == "vacfinder-btn") {
         vacfilterDose = "none";
         vacfilterVaccine = "none";
         vacfilterBlockNow = "none";
         vacfilterAvail = "avail";
       }
-    }
 
 
-    if(typeof event !== 'undefined') {
-
-    
-      if(event.target.id == "vacAll" || event.target.id == "vacAvail") {
+      else if(event.target.id == "vacAll" || event.target.id == "vacAvail") {
 
           let districtDropdown = document.getElementById('district-dropdown');
           let stateDropdown = document.getElementById('state-dropdown');
@@ -59,7 +56,7 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
 
 
 
-      if(event.target.id == filterBlock.split(" ")[0]) {
+      else if(event.target.id == filterBlock.replace(/\W+/g, '-').toLowerCase()) {
         if(vacfilterBlockNow != filterBlock) {
           vacfilterBlockNow = filterBlock;
         }
@@ -69,7 +66,7 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
       }
       
       
-      if(event.target.id == "dose1-btn" || event.target.id == "dose2-btn") {
+      else if(event.target.id == "dose1-btn" || event.target.id == "dose2-btn") {
         if(vacfilterDose != filterDose) {
           vacfilterDose = filterDose;
           event.target.classList.add("active");
@@ -88,7 +85,7 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
       }
 
     
-      if(event.target.id == "covishield-btn" || event.target.id == "covaxin-btn") {
+      else if(event.target.id == "covishield-btn" || event.target.id == "covaxin-btn") {
         if(vacfilterVaccine != filterVaccine) {
           vacfilterVaccine = filterVaccine;
           event.target.classList.add("active");
@@ -107,35 +104,16 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
     }  
 
     
-    var vacBlocks = [];
-    var blockFilter = document.querySelector('#blockFilters');
+    let vacBlocks = [];
+    let blockFilter = document.querySelector('#blockFilters');
     
     fetchData(date, districtID).then(data => {
       
+      blockFilter.innerHTML = '';
       vaccinesNearByList.innerHTML = '';
   
       if ( data != 0 && data.sessions.length !== 0) {
         
-        if ( typeof event === 'undefined') {
-          var vaccineKeys = [];
-          for (var i=0; i < data.sessions.length; i++) {
-            vaccineKeys[i] = data.sessions[i].vaccine;
-          }
-          vaccineKeys = vaccineKeys.filter(function (x, i, a) { return a.indexOf(x) === i; });
-          let otherVaccines = vaccineKeys.filter(x => !['COVISHIELD', 'COVAXIN'].includes(x));
-          if (otherVaccines.length) {
-            let vacfilterBtn = document.getElementById('vacFilter');
-            for (var i=0; i < otherVaccines.length; i++) {
-              let btn = document.createElement("button");
-              btn.classList.add('vacfilter-btn', 'btn', 'btn-light', 'border-secondary', 'btn-sm');
-              btn.setAttribute('id', otherVaccines[i]+'-btn');
-              btn.setAttribute('onclick', 'vacFinderByDate(event, undefined, undefined, '+otherVaccines[i]+', undefined, undefined)');
-              btn.innerHTML = otherVaccines[i][0].toUpperCase() + otherVaccines[i].slice(1).toLowerCase();
-              vacfilterBtn.append(btn);
-            }
-          }
-        }
-
         if(vacfilterAvail == "avail") {
         var vacsessions = data.sessions.filter(session => session.available_capacity > 0);
         }
@@ -143,30 +121,45 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
           var vacsessions = data.sessions.filter(session => session.available_capacity >= 0);
         }  
         
+        if ( typeof event === 'undefined') {
+          (async () => {
+            var vaccineKeys = [];
+            for (var i=0; i < data.sessions.length; i++) {
+              vaccineKeys[i] = data.sessions[i].vaccine;
+            }
+            vaccineKeys = vaccineKeys.filter(function (x, i, a) { return a.indexOf(x) === i; });
+            let otherVaccines = vaccineKeys.filter(x => !['COVISHIELD', 'COVAXIN'].includes(x));
+            if (otherVaccines.length) {
+              let vacfilterBtn = document.getElementById('vacFilter');
+              for (var i=0; i < otherVaccines.length; i++) {
+                let btn = document.createElement("button");
+                btn.classList.add('vacfilter-btn', 'btn', 'btn-light', 'border-secondary', 'btn-sm');
+                btn.setAttribute('id', otherVaccines[i]+'-btn');
+                btn.setAttribute('onclick', 'vacFinderByDate(event, undefined, undefined, '+otherVaccines[i]+', undefined, undefined)');
+                btn.innerHTML = otherVaccines[i][0].toUpperCase() + otherVaccines[i].slice(1).toLowerCase();
+                vacfilterBtn.append(btn);
+              }
+            }  
+          })();
+        }
 
-        for (var i=0; i < vacsessions.length; i++) {
-          vacBlocks.push(vacsessions[i].block_name);
-        }
-        function uniqueBlocks(vB) {
-          return vB.sort().filter(function(item, pos, ary) {
-            return !pos || item != ary[pos - 1];
-          })
-        }
-        vacBlocks = uniqueBlocks(vacBlocks);
-        blockFilter.innerHTML = '';
-        for (var i=0; i < vacBlocks.length; i++) {
-          blockFilter.innerHTML += `<a href="#" id="${vacBlocks[i].split(" ")[0]}" class="blockfilter-btn" onclick="vacFinderByDate(undefined, undefined, undefined, '${vacBlocks[i]}', undefined); return false;">${vacBlocks[i].split(" ")[0]}</a>`;
-        }
-
-        if( vacfilterBlockNow != "none") {
-          if(document.querySelector('#'+vacfilterBlockNow.split(" ")[0])) {
-            document.querySelector('#'+vacfilterBlockNow.split(" ")[0]).classList.add("active");
+        (async () => {
+          for (var i=0; i < vacsessions.length; i++) {
+            vacBlocks[i] = vacsessions[i].block_name;
           }
-        }
-
-
-
-
+          vacBlocks = vacBlocks.filter(function (x, i, a) { return a.indexOf(x) === i; });
+          
+          for (var i=0; i < vacBlocks.length; i++) {
+            blockFilter.innerHTML += `<a href="#" id="${vacBlocks[i].replace(/\W+/g, '-').toLowerCase()}" class="blockfilter-btn" onclick="vacFinderByDate(event, undefined, undefined, undefined, '${vacBlocks[i]}', undefined);">${vacBlocks[i].split(" ")[0]}</a>`;
+          }
+          
+          if( vacfilterBlockNow != "none") {
+            let cvacFilter = document.querySelector('#'+vacfilterBlockNow.replace(/\W+/g, '-').toLowerCase()) || 0;
+            if(cvacFilter) {
+              cvacFilter.classList.add("active");
+            }
+          }
+        })();
         
         
         if(vacfilterBlockNow != "none"){
