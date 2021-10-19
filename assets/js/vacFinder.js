@@ -241,7 +241,7 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
         if(vacAvailCheck.length === 0) {
           vaccinesNearByList.innerHTML = `
             <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
-              Currently, No Vaccination Center found with available vaccine in Maharajganj for selected day.
+              Currently, No vaccines available for your query.
             </div>`;
         }
       }
@@ -249,7 +249,7 @@ function vacFinderByDate(event, date = vacFinderDate, filterDose = vacfilterDose
       else if (data != 0 && data.sessions.length === 0) {
         vaccinesNearByList.innerHTML = `
             <div class="lead fs-4 text-center border border-danger p-3 lh-base col-11">
-              Currently, No Vaccination Center found with available vaccine in Maharajganj for selected day.
+              Currently, No vaccines available for your query.
             </div>`;
       }
 
